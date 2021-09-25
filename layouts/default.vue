@@ -8,7 +8,7 @@
 
 <style>
 * {
-  font-family: '微軟正黑體';
+  font-family: 'Microsoft JhengHei';
 }
 a {
   text-decoration: none;

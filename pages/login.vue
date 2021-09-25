@@ -8,33 +8,36 @@
         Sign in
       </v-card-title>
       <v-card-text class="mt-10">
-        <v-row justify="center">
-          <v-col cols="8">
-            <v-text-field
-              label="Username"
-              outlined
-              v-model="username"
-              :rules="[rules.required]"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="8">
-            <v-text-field
-              label="Password"
-              outlined
-              v-model="password"
-              :rules="[rules.required]"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="8">
-            <v-btn block color="#0091EA" class="white--text" @click="submit"
-              >登入</v-btn
-            >
-          </v-col>
-          <v-col cols="8">
-            <h4>還沒有帳號嗎？</h4>
-            <nuxt-link :to="{ name: 'register' }">點此註冊</nuxt-link>
-          </v-col>
-        </v-row>
+        <v-form ref="form">
+          <v-row justify="center">
+            <v-col cols="8">
+              <v-text-field
+                label="Username"
+                outlined
+                v-model="username"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-text-field
+                label="Password"
+                outlined
+                v-model="password"
+                :rules="[rules.required]"
+                type="password"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-btn block color="#0091EA" class="white--text" @click="submit">
+                登入
+              </v-btn>
+            </v-col>
+            <v-col cols="8">
+              <h4>還沒有帳號嗎？</h4>
+              <nuxt-link :to="{ name: 'register' }">點此註冊</nuxt-link>
+            </v-col>
+          </v-row>
+        </v-form>
       </v-card-text>
     </v-card>
   </v-container>
@@ -55,7 +58,12 @@ export default {
     backPage() {
       this.$router.go(-1)
     },
-    submit() {},
+    submit() {
+      const validate = this.$refs.form.validate()
+      if (validate) {
+        // Write your code here
+      }
+    },
   },
 }
 </script>

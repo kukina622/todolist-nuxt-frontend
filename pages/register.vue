@@ -8,37 +8,41 @@
         >Sign up</v-card-title
       >
       <v-card-text class="mt-10">
-        <v-row justify="center">
-          <v-col cols="8">
-            <v-text-field
-              label="Username"
-              outlined
-              v-model="username"
-              :rules="[rules.required]"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="8">
-            <v-text-field
-              label="Password"
-              outlined
-              v-model="password"
-              :rules="[rules.required]"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="8">
-            <v-text-field
-              label="Confirm password"
-              outlined
-              v-model="confirmPwd"
-              :rules="[rules.required, rules.confirmPwd]"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="8">
-            <v-btn block color="#0091EA" class="white--text" @click="submit"
-              >註冊</v-btn
-            >
-          </v-col>
-        </v-row>
+        <v-form ref="form">
+          <v-row justify="center">
+            <v-col cols="8">
+              <v-text-field
+                label="Username"
+                outlined
+                v-model="username"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-text-field
+                label="Password"
+                outlined
+                v-model="password"
+                :rules="[rules.required]"
+                type="password"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-text-field
+                label="Confirm password"
+                outlined
+                v-model="confirmPwd"
+                :rules="[rules.required, rules.confirmPwd]"
+                type="password"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="8">
+              <v-btn block color="#0091EA" class="white--text" @click="submit">
+                註冊
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-form>
       </v-card-text>
     </v-card>
   </v-container>
@@ -62,7 +66,12 @@ export default {
     backPage() {
       this.$router.go(-1)
     },
-    submit() {},
+    submit() {
+      const validate = this.$refs.form.validate()
+      if (validate) {
+        // Write your code here
+      }
+    },
   },
 }
 </script>
