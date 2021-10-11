@@ -66,10 +66,14 @@ export default {
     backPage() {
       this.$router.go(-1)
     },
-    submit() {
+    async submit() {
       const validate = this.$refs.form.validate()
       if (validate) {
-        // Write your code here
+        const res = await this.$api.user.register(this.username, this.password)
+        if (res instanceof Error) {
+          return console.log(res.response.data)
+        }
+        this.$router.push({ name: 'index' })
       }
     },
   },

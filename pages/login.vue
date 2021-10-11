@@ -47,8 +47,8 @@
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      username: 'string',
+      password: 'string',
       rules: {
         required: (values) => !!values || 'The field is required',
       },
@@ -58,10 +58,15 @@ export default {
     backPage() {
       this.$router.go(-1)
     },
-    submit() {
+    async submit() {
       const validate = this.$refs.form.validate()
       if (validate) {
-        // Write your code here
+        const res = await this.$api.user.login(this.username, this.password)
+        if (res instanceof Error) {
+          this.$swal('Hello Vue world!!!')
+          return console.log(res.response.data)
+        }
+        this.$router.push({ name: 'index' })
       }
     },
   },
