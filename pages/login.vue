@@ -63,9 +63,9 @@ export default {
       if (validate) {
         const res = await this.$api.user.login(this.username, this.password)
         if (res instanceof Error) {
-          this.$swal('Hello Vue world!!!')
-          return console.log(res.response.data)
+          return this.$alert.error(res.response.data)
         }
+        this.$alert.success("登入成功")
         this.$router.push({ name: 'index' })
       }
     },

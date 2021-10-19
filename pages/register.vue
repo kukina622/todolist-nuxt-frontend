@@ -71,8 +71,9 @@ export default {
       if (validate) {
         const res = await this.$api.user.register(this.username, this.password)
         if (res instanceof Error) {
-          return console.log(res.response.data)
+          return this.$alert.error(res.response.data)
         }
+        this.$alert.success("註冊成功")
         this.$router.push({ name: 'index' })
       }
     },

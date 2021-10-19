@@ -21,7 +21,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/api.js', '@/plugins/vue-sweetalert2.js'],
+  plugins: ['@/plugins/api.js', '@/plugins/alert.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,6 +37,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    'vue-sweetalert2/nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -76,6 +77,6 @@ export default {
   build: {},
 
   server: {
-    port: 8080, // default: 3000
+    port: 8000, // default: 3000
   },
 }
