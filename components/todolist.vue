@@ -124,6 +124,12 @@
 
 <script>
 export default {
+  props: {
+    tasks: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {
       date: this.formateDate(Date.now()),

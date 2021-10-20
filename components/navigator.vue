@@ -14,3 +14,14 @@
     </v-btn>
   </v-app-bar>
 </template>
+
+<script>
+export default {
+  props: {
+    isLogin: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
+</script>

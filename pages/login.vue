@@ -47,8 +47,8 @@
 export default {
   data() {
     return {
-      username: 'string',
-      password: 'string',
+      username: '',
+      password: '',
       rules: {
         required: (values) => !!values || 'The field is required',
       },
