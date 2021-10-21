@@ -73,7 +73,7 @@ export default {
         if (res instanceof Error) {
           return this.$alert.error(res.response.data)
         }
-        this.$alert.success("註冊成功")
+        this.$alert.success('註冊成功')
         this.$router.push({ name: 'index' })
       }
     },
