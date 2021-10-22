@@ -191,15 +191,21 @@ export default {
     async deleteTask(tid) {
       const { isConfirmed } = await this.$alert.confirm('確定刪除？')
       if (isConfirmed) {
-        await this.$api.tasks.deleteTask(tid)
+        const res = await this.$api.tasks.deleteTask(tid)
+        if (res instanceof Error) {
+          return this.$alert.error(res.response.data)
+        }
+        this.$emit('deleteTask', tid)
         this.$alert.success('刪除成功')
-        this.$router.app.refresh()
       }
     },
     async completeTask(tid) {
-      await this.$api.tasks.patchTask(tid, true)
+      const res = await this.$api.tasks.patchTask(tid, true)
+      if (res instanceof Error) {
+        return this.$alert.error(res.response.data)
+      }
+      this.$emit('completeTask', tid)
       this.$alert.success('更新成功')
-      this.$router.app.refresh()
     },
   },
   watch: {

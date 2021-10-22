@@ -1,7 +1,11 @@
 <template>
   <v-container fluid class="index_container">
     <navigator :isLogin="isLogin" />
-    <todolist :tasks="tasks" />
+    <todolist
+      :tasks="tasks"
+      @deleteTask="deleteTask"
+      @completeTask="completeTask"
+    />
   </v-container>
 </template>
 
@@ -18,6 +22,16 @@ export default {
     return { isLogin, tasks }
   },
   components: { navigator, todolist },
+  methods: {
+    deleteTask(tid) {
+      const deleteIndex = this.tasks.findIndex((task) => task.tid === tid)
+      this.tasks.splice(deleteIndex, 1)
+    },
+    completeTask(tid) {
+      const completeIndex = this.tasks.findIndex((task) => task.tid === tid)
+      this.tasks[completeIndex]['is_finish'] = true
+    },
+  },
 }
 </script>
 
