@@ -176,7 +176,8 @@ export default {
       }
       return `${year}-${month + 1}-${day}`
     },
-    async submit() {
+    async submit(event) {
+      event.preventDefault()
       const validate = this.$refs.form.validate()
       if (validate) {
         const res = await this.$api.tasks.postTask(this.newTask, this.date)
@@ -184,8 +185,8 @@ export default {
         if (res instanceof Error) {
           return this.$alert.error(res.response.data)
         }
-        this.$router.app.refresh()
-        return this.$alert.success('新增成功')
+        this.$emit('addTask')
+        this.$alert.success('新增成功')
       }
     },
     async deleteTask(tid) {

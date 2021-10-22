@@ -16,6 +16,7 @@
                 outlined
                 v-model="username"
                 :rules="[rules.required]"
+                @keydown.enter="submit"
               ></v-text-field>
             </v-col>
             <v-col cols="8">
@@ -25,6 +26,7 @@
                 v-model="password"
                 :rules="[rules.required]"
                 type="password"
+                @keydown.enter="submit"
               ></v-text-field>
             </v-col>
             <v-col cols="8">
@@ -34,6 +36,7 @@
                 v-model="confirmPwd"
                 :rules="[rules.required, rules.confirmPwd]"
                 type="password"
+                @keydown.enter="submit"
               ></v-text-field>
             </v-col>
             <v-col cols="8">
@@ -75,7 +78,7 @@ export default {
           return this.$alert.error(res.response.data)
         }
         this.$alert.success('註冊成功')
-        this.$router.push({ name: 'index' })
+        this.$router.push({ name: 'login' })
       }
     },
   },

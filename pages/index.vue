@@ -5,6 +5,7 @@
       :tasks="tasks"
       @deleteTask="deleteTask"
       @completeTask="completeTask"
+      @addTask="addTask"
     />
   </v-container>
 </template>
@@ -30,6 +31,13 @@ export default {
     completeTask(tid) {
       const completeIndex = this.tasks.findIndex((task) => task.tid === tid)
       this.tasks[completeIndex]['is_finish'] = true
+    },
+    async addTask() {
+      const res = await this.$api.tasks.getTask()
+      if (res instanceof Error) {
+        return this.$alert.error(res.response.data)
+      }
+      this.tasks = res.data
     },
   },
 }

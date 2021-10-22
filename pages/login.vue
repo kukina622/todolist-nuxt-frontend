@@ -16,6 +16,7 @@
                 outlined
                 v-model="username"
                 :rules="[rules.required]"
+                @keydown.enter="submit"
               ></v-text-field>
             </v-col>
             <v-col cols="8">
@@ -25,6 +26,7 @@
                 v-model="password"
                 :rules="[rules.required]"
                 type="password"
+                @keydown.enter="submit"
               ></v-text-field>
             </v-col>
             <v-col cols="8">
