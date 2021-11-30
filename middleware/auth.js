@@ -3,5 +3,4 @@ export default async function ({ app, redirect }) {
   if (isLogin) {
     return redirect('/')
   }
-  return false
 }
