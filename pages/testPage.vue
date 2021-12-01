@@ -33,6 +33,9 @@ export default {
       this.$WhereAmIStanding()
     },
   },
+  // middleware用的
+  // 還沒講到可以先不看
+  middleware: 'testMiddleware',
 }
 </script>
 
