@@ -51,7 +51,7 @@ export default {
   },
   proxy: {
     '/api': {
-      target: 'http://127.0.0.1:3000/api/',
+      target: 'https://todolist.minouo.eu.org/api/',
       changeOrigin: true,
       pathRewrite: {
         '^/api': '',
